@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  category: one
+  name: MyString
+  description: MyString
+  time_total: 1
+  time_started: 2021-11-17 11:00:18
+  time_ended: 2021-11-17 11:00:18
+
+two:
+  user: two
+  category: two
+  name: MyString
+  description: MyString
+  time_total: 1
+  time_started: 2021-11-17 11:00:18
+  time_ended: 2021-11-17 11:00:18
