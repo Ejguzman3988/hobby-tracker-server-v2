@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  daily_stat: one
+  timer: one
+  day: 2021-11-17
+
+two:
+  daily_stat: two
+  timer: two
+  day: 2021-11-17
