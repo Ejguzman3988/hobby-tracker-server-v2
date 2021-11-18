@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_17_160438) do
+ActiveRecord::Schema.define(version: 2021_11_18_133259) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_11_17_160438) do
     t.integer "non_alloted_time"
     t.integer "tracked_time"
     t.integer "max_time"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_daily_stats_on_user_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_11_17_160438) do
     t.date "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "total_time"
     t.index ["daily_stat_id"], name: "index_days_on_daily_stat_id"
     t.index ["timer_id"], name: "index_days_on_timer_id"
   end

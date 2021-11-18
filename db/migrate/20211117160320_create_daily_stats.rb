@@ -5,7 +5,7 @@ class CreateDailyStats < ActiveRecord::Migration[6.1]
       t.integer :non_alloted_time
       t.integer :tracked_time
       t.integer :max_time
-      t.belongs_to :user, null: false, foreign_key: true
+      t.belongs_to :user, foreign_key: true
 
       t.timestamps
     end
