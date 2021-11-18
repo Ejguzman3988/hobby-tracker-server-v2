@@ -4,4 +4,6 @@ class User < ApplicationRecord
   has_one :daily_stat
   has_many :daily_stats, through: :timers
   has_many :categories, through: :timers
+
+  has_secure_password
 end
