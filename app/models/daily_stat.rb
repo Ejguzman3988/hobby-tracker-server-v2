@@ -1,9 +1,15 @@
 class DailyStat < ApplicationRecord
   belongs_to :user, optional: true
-  has_one :day
+  belongs_to :day, optional: true
   has_many :timers, through: :days
   validates :total_restricted_time, :non_alloted_time, :tracked_time, length: {maximum: 24, minimum: 0}
+  validate :optional_with_user
 
+  def optional_with_user
+    if !self.user.present? && !self.day.present?
+      errors.add(:day, "must be present when creating timer")
+    end
+  end
 
   def meta_restricted_time=(time)
     self.total_restricted_time = time

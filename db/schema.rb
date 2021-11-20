@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_133421) do
+ActiveRecord::Schema.define(version: 2021_11_20_140827) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -27,17 +27,17 @@ ActiveRecord::Schema.define(version: 2021_11_20_133421) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "day_id"
+    t.index ["day_id"], name: "index_daily_stats_on_day_id"
     t.index ["user_id"], name: "index_daily_stats_on_user_id"
   end
 
   create_table "days", force: :cascade do |t|
-    t.integer "daily_stat_id", null: false
     t.integer "timer_id", null: false
     t.integer "total_time"
     t.date "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["daily_stat_id"], name: "index_days_on_daily_stat_id"
     t.index ["timer_id"], name: "index_days_on_timer_id"
   end
 
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 2021_11_20_133421) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "daily_stats", "days"
   add_foreign_key "daily_stats", "users"
-  add_foreign_key "days", "daily_stats"
   add_foreign_key "days", "timers"
   add_foreign_key "restricted_times", "users"
   add_foreign_key "timers", "categories"
