@@ -7,12 +7,12 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  def restricted_times=(res_times)
+  def meta_restricted_times=(res_times)
     timers = res_times.map do |res|
       RestrictedTime.create(res)
     end
     total_res_time = timers.reduce(0) { |sum, n| n.total_time + sum}
-    DailyStat.create({total_restricted_time: total_res_time, user_id: self.id})
+    daily_stat = DailyStat.create({meta_restricted_time: total_res_time, user_id: self.id})
 
   end
 
