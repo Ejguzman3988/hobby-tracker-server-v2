@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   has_many :restricted_times
   has_many :timers
   has_one :default_stat, class_name: "DailyStat"
@@ -8,5 +7,13 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  
+  def restricted_times=(res_times)
+    timers = res_times.map do |res|
+      RestrictedTime.create(res)
+    end
+    total_res_time = timers.reduce(0) { |sum, n| n.total_time + sum}
+    DailyStat.create({total_restricted_time: total_res_time, user_id: self.id})
+
+  end
+
 end
