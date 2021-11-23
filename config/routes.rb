@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :days
+  resources :intervals
   resources :daily_stats
   resources :restricted_times
   resources :timers
