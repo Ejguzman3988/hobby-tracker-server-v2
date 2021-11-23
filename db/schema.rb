@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_140827) do
+ActiveRecord::Schema.define(version: 2021_11_23_140040) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -27,23 +27,26 @@ ActiveRecord::Schema.define(version: 2021_11_20_140827) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "day_id"
-    t.index ["day_id"], name: "index_daily_stats_on_day_id"
+    t.date "current_day"
     t.index ["user_id"], name: "index_daily_stats_on_user_id"
   end
 
-  create_table "days", force: :cascade do |t|
+  create_table "intervals", force: :cascade do |t|
     t.integer "timer_id", null: false
-    t.integer "total_time"
-    t.date "day"
+    t.integer "total_time", default: 0
+    t.date "current_day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["timer_id"], name: "index_days_on_timer_id"
+    t.integer "daily_stat_id"
+    t.time "time_started"
+    t.time "time_ended"
+    t.index ["daily_stat_id"], name: "index_intervals_on_daily_stat_id"
+    t.index ["timer_id"], name: "index_intervals_on_timer_id"
   end
 
   create_table "restricted_times", force: :cascade do |t|
     t.string "name"
-    t.integer "total_time"
+    t.integer "total_time", default: 0
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -55,9 +58,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_140827) do
     t.integer "category_id", null: false
     t.string "name"
     t.string "description"
-    t.integer "time_total"
-    t.datetime "time_started"
-    t.datetime "time_ended"
+    t.integer "total_time", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_timers_on_category_id"
@@ -73,9 +74,9 @@ ActiveRecord::Schema.define(version: 2021_11_20_140827) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "daily_stats", "days"
   add_foreign_key "daily_stats", "users"
-  add_foreign_key "days", "timers"
+  add_foreign_key "intervals", "daily_stats"
+  add_foreign_key "intervals", "timers"
   add_foreign_key "restricted_times", "users"
   add_foreign_key "timers", "categories"
   add_foreign_key "timers", "users"
