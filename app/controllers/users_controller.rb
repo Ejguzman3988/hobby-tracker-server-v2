@@ -10,14 +10,14 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @user.to_json( include: [:default_stat, :restricted_times])
+    render json: @user
   end
 
   # POST /users
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user.to_json( include: [:default_stat, :restricted_times]), status: :created, location: @user
+      render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      render json: @user.to_json( include: [:default_stat, :restricted_times])
+      render json: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end

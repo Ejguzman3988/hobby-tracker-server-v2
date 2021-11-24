@@ -1,8 +1,15 @@
 class Timer < ApplicationRecord
+  serialize :user, JSON
+  serialize :category, JSON
+  serialize :intervals, JSON
+ 
+
   belongs_to :user
   belongs_to :category
   has_many :intervals
   has_many :daily_stats, through: :intervals
+
+  
 
   def initialize(attr)
     super(attr)
@@ -12,4 +19,7 @@ class Timer < ApplicationRecord
     interval.timer = self
     interval.save
   end
+
+  
+  
 end

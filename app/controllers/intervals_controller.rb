@@ -3,7 +3,7 @@ class IntervalsController < ApplicationController
 
   # GET /intervals
   def index
-    @intervals = interval.all
+    @intervals = Interval.all
 
     render json: @intervals
   end
@@ -15,7 +15,7 @@ class IntervalsController < ApplicationController
 
   # POST /intervals
   def create
-    @interval = interval.new(interval_params)
+    @interval = Interval.new(interval_params)
 
     if @interval.save
       render json: @interval, status: :created, location: @interval
@@ -41,7 +41,7 @@ class IntervalsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_interval
-      @interval = interval.find(params[:id])
+      @interval = Interval.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

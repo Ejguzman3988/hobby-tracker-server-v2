@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  serialize :default_stat, JSON
+  serialize :restricted_times, JSON
   has_many :restricted_times
   has_many :timers
   has_one :default_stat, class_name: "DailyStat"
