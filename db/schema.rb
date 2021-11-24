@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_140040) do
+ActiveRecord::Schema.define(version: 2021_11_24_134648) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_140040) do
     t.integer "daily_stat_id"
     t.time "time_started"
     t.time "time_ended"
+    t.string "status"
     t.index ["daily_stat_id"], name: "index_intervals_on_daily_stat_id"
     t.index ["timer_id"], name: "index_intervals_on_timer_id"
   end
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_140040) do
     t.string "theme"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "timezone"
   end
 
   add_foreign_key "daily_stats", "users"

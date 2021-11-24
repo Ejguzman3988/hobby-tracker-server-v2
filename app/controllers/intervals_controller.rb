@@ -46,6 +46,6 @@ class IntervalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def interval_params
-      params.require(:interval).permit(:daily_stat_id, :timer_id, :interval)
+      params.require(:interval).permit(:daily_stat_id, :timer_id, :interval, :time_started, :time_ended, :status)
     end
 end
