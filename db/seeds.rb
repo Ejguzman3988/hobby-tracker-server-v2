@@ -19,33 +19,33 @@
 #   t.datetime "updated_at", precision: 6, null: false
 # end
 
-# categoryArr = [
-#   'Arts',
-#   'Collecting',
-#   'Games',
-#   'Electronics',
-#   'Performing Arts',
-#   'Travel',
-#   'Outdoors',
-#   'Sports',
-#   'Music',
-#   'Spiritual Mental',
-#   'Food',
-#   'Entertainment',
-#   'Pets',
-#   'Work',
-#   'Misc'
-# ]
+categoryArr = [
+  'Arts',
+  'Collecting',
+  'Games',
+  'Electronics',
+  'Performing Arts',
+  'Travel',
+  'Outdoors',
+  'Sports',
+  'Music',
+  'Spiritual Mental',
+  'Food',
+  'Entertainment',
+  'Pets',
+  'Work',
+  'Misc'
+]
 
-# categoryArr.each do |cat|
-#   catHash = {
-#     name: cat,
-#     picture: Faker::LoremFlickr.image(size: "300x300", search_terms: [cat]),
-#     color: Faker::Color.hex_color
-#   }
-#   Category.create(catHash)
+categoryArr.each do |cat|
+  catHash = {
+    name: cat,
+    picture: Faker::LoremFlickr.image(size: "300x300", search_terms: [cat]),
+    color: Faker::Color.hex_color
+  }
+  Category.create(catHash)
 
-# end
+end
 #picture: Faker::LoremFlickr.image(size: "50x60", search_terms: ['sports'])
 #color: Faker::Color.hex_color
 # CATEGORIES ---------------------
