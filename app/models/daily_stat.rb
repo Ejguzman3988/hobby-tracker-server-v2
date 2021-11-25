@@ -15,4 +15,8 @@ class DailyStat < ApplicationRecord
     self.total_restricted_time = time
     self.non_alloted_time -= time
   end
+  
+  def non_alloted_time=(time)
+    super((time - self.total_time))
+  end
 end
