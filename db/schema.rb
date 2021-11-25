@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_25_152605) do
+ActiveRecord::Schema.define(version: 2021_11_25_160354) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_11_25_152605) do
 
   create_table "daily_stats", force: :cascade do |t|
     t.integer "total_restricted_time", default: 0
-    t.integer "non_alloted_time", default: 24
+    t.integer "non_allotted_time", default: 24
     t.integer "tracked_time", default: 24
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

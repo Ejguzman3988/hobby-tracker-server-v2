@@ -12,7 +12,7 @@ class DailyStatsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create daily_stat" do
     assert_difference('DailyStat.count') do
-      post daily_stats_url, params: { daily_stat: { max_time: @daily_stat.max_time, non_alloted_time: @daily_stat.non_alloted_time, total_restrcited_time: @daily_stat.total_restrcited_time, tracked_time: @daily_stat.tracked_time, user_id: @daily_stat.user_id } }, as: :json
+      post daily_stats_url, params: { daily_stat: { max_time: @daily_stat.max_time, non_allotted_time: @daily_stat.non_allotted_time, total_restrcited_time: @daily_stat.total_restrcited_time, tracked_time: @daily_stat.tracked_time, user_id: @daily_stat.user_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class DailyStatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update daily_stat" do
-    patch daily_stat_url(@daily_stat), params: { daily_stat: { max_time: @daily_stat.max_time, non_alloted_time: @daily_stat.non_alloted_time, total_restrcited_time: @daily_stat.total_restrcited_time, tracked_time: @daily_stat.tracked_time, user_id: @daily_stat.user_id } }, as: :json
+    patch daily_stat_url(@daily_stat), params: { daily_stat: { max_time: @daily_stat.max_time, non_allotted_time: @daily_stat.non_allotted_time, total_restrcited_time: @daily_stat.total_restrcited_time, tracked_time: @daily_stat.tracked_time, user_id: @daily_stat.user_id } }, as: :json
     assert_response 200
   end
 
