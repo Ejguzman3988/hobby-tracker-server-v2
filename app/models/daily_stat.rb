@@ -13,10 +13,12 @@ class DailyStat < ApplicationRecord
 
   def meta_restricted_time=(time)
     self.total_restricted_time = time
-    self.non_alloted_time -= time
+    self.non_alloted_time -= (time + self.total_time)
   end
-  
-  def non_alloted_time=(time)
-    super((time - self.total_time))
+
+  def total_time=(time)
+    self.non_alloted_time = self.tracked_time - self.total_restricted_time - time
+    super(time)
   end
+
 end

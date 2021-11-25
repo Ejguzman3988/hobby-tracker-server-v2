@@ -46,6 +46,6 @@ class DailyStatsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def daily_stat_params
-      params.require(:daily_stat).permit(:total_restrcited_time, :non_alloted_time, :tracked_time, :max_time, :user_id)
+      params.require(:daily_stat).permit(:total_restrcited_time, :non_alloted_time, :tracked_time, :max_time, :user_id, :total_time)
     end
 end
