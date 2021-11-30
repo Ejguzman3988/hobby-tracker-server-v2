@@ -19,6 +19,15 @@ class Timer < ApplicationRecord
     interval.timer = self
     interval.save
   end
+  def total_time
+    if(self.add_all_intervals() != self.class.where(id: self.id).pluck(:total_time)[0])
+      self.total_time = self.add_all_intervals()
+    end
+    super()
+  end
+
+  
+ 
 
   
   
