@@ -28,9 +28,10 @@ class DailyStat < ApplicationRecord
 
   def total_time
     if(self.add_all_intervals() != self.class.where(id: self.id).pluck(:total_time)[0] )
-      self.total_time = self.add_all_intervals()
+      self.update(total_time: add_all_intervals())
     end
     super()
+  
   end
 
   

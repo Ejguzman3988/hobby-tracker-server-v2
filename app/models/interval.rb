@@ -8,7 +8,7 @@ class Interval < ApplicationRecord
     case activity.downcase
     when "play"
       # This if statement deals with the pausing
-      if(self.time_started != nil)
+      if(self.time_started == nil)
         self.time_started = Time.current
       elsif (self.total_time)
         self.time_started = Time.current - self.total_time
