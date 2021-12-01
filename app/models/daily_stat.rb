@@ -17,12 +17,12 @@ class DailyStat < ApplicationRecord
   end
 
   def total_restricted_time=(time)
+    self.update(non_allotted_time: (self.tracked_time - self.total_time - time))
     super(time)
-    self.non_allotted_time = (self.tracked_time - self.total_time - time)
   end
 
   def total_time=(time)
-    self.non_allotted_time = self.tracked_time - self.total_restricted_time - time
+    self.update(non_allotted_time: (self.tracked_time - self.total_restricted_time - time))
     super(time)
   end
 
@@ -30,13 +30,7 @@ class DailyStat < ApplicationRecord
     if(self.add_all_intervals() != self.class.where(id: self.id).pluck(:total_time)[0] )
       self.update(total_time: add_all_intervals())
     end
-    super()
+    return add_all_intervals()
   
   end
-
-  
-
-
-  
-
 end

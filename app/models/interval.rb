@@ -21,9 +21,8 @@ class Interval < ApplicationRecord
 
   def total_time=(tot)
     super(tot)
-    daily_stat = self.daily_stat
     timer = self.timer
-    daily_stat.update(total_time: tot)
+ 
     timer.update(total_time: tot)
   end
 
