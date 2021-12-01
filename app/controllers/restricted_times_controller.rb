@@ -46,6 +46,6 @@ class RestrictedTimesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restricted_time_params
-      params.require(:restricted_time).permit(:name, :total_time, :int, :user_id)
+      params.require(:restricted_time).permit(:name, :total_time, :user_id)
     end
 end

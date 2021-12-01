@@ -52,6 +52,8 @@ end
 
 # USER ---------------------
 
+# {"user": { "name": "robo", "username": "robo", "password": "testtest", "timezone": "EST" }}
+
 # USER ---------------------
 
 # TODO: TIMERS ---------------------
