@@ -8,9 +8,6 @@ class DailyStat < ApplicationRecord
   def initialize(attr)
     super(attr)
     
-    if(!self.user_id)
-      self.total_restricted_time = self.timers[0].user.default_restricted_time.total_restricted_time
-    end
   end
 
   def optional_with_user
@@ -19,9 +16,9 @@ class DailyStat < ApplicationRecord
     end
   end
 
-  def meta_restricted_time=(time)
-    self.total_restricted_time = time
-    self.non_allotted_time -= (time + self.total_time)
+  def total_restricted_time=(time)
+    super(time)
+    self.non_allotted_time = (self.tracked_time - self.total_time - time)
   end
 
   def total_time=(time)
@@ -30,7 +27,7 @@ class DailyStat < ApplicationRecord
   end
 
   def total_time
-    if(self.add_all_intervals() != self.class.where(id: self.id).pluck(:total_time)[0])
+    if(self.add_all_intervals() != self.class.where(id: self.id).pluck(:total_time)[0] )
       self.total_time = self.add_all_intervals()
     end
     super()
