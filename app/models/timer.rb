@@ -9,7 +9,7 @@ class Timer < ApplicationRecord
   has_many :intervals
   has_many :daily_stats, through: :intervals
 
-  
+  attr_accessor :total_time
 
   def initialize(attr)
     super(attr)
@@ -22,7 +22,6 @@ class Timer < ApplicationRecord
   end
   
   def total_time
-
     if(self.add_all_intervals() != self.class.where(id: self.id).pluck(:total_time)[0])
       self.total_time = self.add_all_intervals()
     end
