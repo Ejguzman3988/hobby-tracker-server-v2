@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_02_124106) do
+ActiveRecord::Schema.define(version: 2021_12_02_135707) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_124106) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "timezone"
+    t.string "email"
   end
 
   add_foreign_key "daily_stats", "users"
