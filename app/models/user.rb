@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :daily_stats, through: :timers
   has_many :categories, through: :timers
 
+  validates :username, uniqueness: true, presence: true
+  validates :email, uniqueness: true, presence: true
+
   has_secure_password
 
   def total_restricted_times=(res_times)
