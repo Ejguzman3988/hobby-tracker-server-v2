@@ -4,8 +4,11 @@ class ApplicationController < ActionController::API
   private
 
   def set_time_zone
-    Time.use_zone(User.first.timezone) { yield } if User.first
-    yield
+    if(User.first)
+      Time.use_zone(User.first.timezone) { yield } if User.first
+    else
+      yield
+    end
   end
 
 end
