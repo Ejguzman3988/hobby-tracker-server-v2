@@ -46,6 +46,6 @@ class TimersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def timer_params
-      params.require(:timer).permit(:user_id, :category_id, :name, :description, :time_total)
+      params.require(:timer).permit(:user_id, :category_id, :name, :description, :total_time)
     end
 end

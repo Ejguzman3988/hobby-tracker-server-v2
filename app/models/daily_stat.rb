@@ -27,8 +27,9 @@ class DailyStat < ApplicationRecord
   end
 
  
-  def update_total
-    self.update(total_time: add_all_intervals(), non_allotted_time: (self.tracked_time - self.total_restricted_time - add_all_intervals()))
-    return add_all_intervals()
+  def update_total(interval)
+    self.update(total_time: add_all_intervals(interval), non_allotted_time: (self.tracked_time - self.total_restricted_time - add_all_intervals(interval)))
+    # TODO: FIX LATER NEEDS TO UPDATE ADD_ALL_INTERVALS, When interval is paused it gets the old add alll intervals
+    return add_all_intervals(interval)
   end
 end
